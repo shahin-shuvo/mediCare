@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.shuvo.medicare">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permisson.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <application
+        android:name=".Reminder.mediCare"
+        android:allowBackup="true"
+        android:icon="@mipmap/icon"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <receiver
+            android:name=".Reminder.MyAlarm"
+            android:enabled="true"
+            android:exported="true" />
+        <!--
+    Set custom default icon. This is used when no icon is set for incoming notification messages.
+    See README(https://goo.gl/l4GJaQ) for more.
+        -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_add_alert_black_24dp" />
+        <!--
+             Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more.
+        -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_api_key" />
+        <!-- Splash screen -->
+        <activity
+            android:name=".LaunchScreen.SplashScreen"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:label="mediCare"
+            android:theme="@style/AppTheme.NoActionBar">
+           <!-- <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
+        <activity android:name=".First_Aid.FirstAid_fragment" />
+
+        <!-- [START firebase_service] -->
+        <service android:name=".CurrentEpidemic.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <!-- [END firebase_service] -->
+        <!-- [START firebase_iid_service] -->
+        <service android:name=".CurrentEpidemic.MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <!-- [END firebase_iid_service] -->
+        <activity
+            android:name=".ContactNumber.DoctorAddActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ContactNumber.TestActivity" />
+        <activity android:name=".ContactNumber.ContactActivity" />
+        <activity
+            android:name=".ContactNumber.AmbulanceAddActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ContactNumber.EmergencyAddActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ContactNumber.DoctorInfoActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ContactNumber.AmbulanceInfoActivity" />
+        <activity android:name=".ContactNumber.EmergencyInfoActivity" />
+
+        <application android:name="com.CustomApplication" />
+
+        <activity android:name=".First_Aid.IntroActivity" />
+        <activity android:name=".User_Profile.LoginPage" />
+        <activity android:name=".Reminder.CreateEvents" />
+        <activity android:name=".User_Profile.sign_up_activity" />
+        <activity android:name=".Trends.Trends_Main" />
+        <activity android:name=".physicalFitness.physical_fitness" />
+        <activity android:name=".Maps.MapsMainActivity" />
+        <activity android:name=".User_Profile.Profile" />
+        <activity android:name=".User_Profile.Update_Profile" />
+        <activity android:name=".Trends.Calories.Calorie_Result" />
+        <activity
+            android:name=".PhysicalTracker.StepCount.StepCount.activities.MainActivityStepCounter"
+            android:label="mediCare" />
+
+        <receiver android:name=".PhysicalTracker.StepCount.StepCount.receivers.OnBootCompletedBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".PhysicalTracker.StepCount.StepCount.receivers.OnShutdownBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_SHUTDOWN" />
+                <!-- this is for some htc devices (and others) -->
+                <action android:name="android.intent.action.QUICKBOOT_POWEROFF" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".PhysicalTracker.StepCount.StepCount.receivers.OnPackageReplacedBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".PhysicalTracker.StepCount.StepCount.receivers.StepCountPersistenceReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="org.secuso.privacyfriendlystepcounter.WALKING_MODE_CHANGED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".PhysicalTracker.StepCount.StepCount.receivers.MotivationAlertReceiver" />
+
+        <service android:name=".PhysicalTracker.StepCount.StepCount.Services.AccelerometerStepDetectorService" />
+        <service
+            android:name=".PhysicalTracker.StepCount.StepCount.Services.HardwareStepDetectorService"
+            android:stopWithTask="false" />
+
+        <activity android:name=".MediSearch.DefinationActivity" />
+        <activity android:name=".Gallery_second.Second_gallery" />
+        <activity android:name=".Gallery_second.ShowImagesActivity"></activity>
+
+    </application>
+
+</manifest>

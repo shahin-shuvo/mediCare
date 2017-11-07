@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1044235046455",
+    "firebase_url": "https://medicare-608f3.firebaseio.com",
+    "project_id": "medicare-608f3",
+    "storage_bucket": "medicare-608f3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1044235046455:android:c120ccd2fa2c93ae",
+        "android_client_info": {
+          "package_name": "com.example.shuvo.medicare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1044235046455-q64o3co2pbrdm8ic8nqff5j3veskjtuu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClU0y5L9Vl9T9StPBdCtHF6tJAH16xVZg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
